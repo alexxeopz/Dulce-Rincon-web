@@ -1,0 +1,466 @@
+<title>Dulce Rincón</title>
+<meta name="description" content="Alfajores y chocolates artesanales hechos a mano — catálogo, opiniones y pedidos por WhatsApp.">
+<style>
+  :root{
+    --bg:#fff8f1;
+    --surface:#ffffff;
+    --surface-2:#fdeee0;
+    --cocoa:#3a2420;
+    --cocoa-soft:#6b4a3f;
+    --caramel:#c3812f;
+    --caramel-ink:#8a551a;
+    --wine:#7c2d3b;
+    --wine-ink:#5c1f2a;
+    --line:#ecd9c3;
+    --star:#d99a2b;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#241613;
+      --surface:#2f1e1a;
+      --surface-2:#3a2520;
+      --cocoa:#f6ebe2;
+      --cocoa-soft:#d8bfb2;
+      --caramel:#e2a254;
+      --caramel-ink:#f0c080;
+      --wine:#e0677a;
+      --wine-ink:#f0919f;
+      --line:#4a332c;
+      --star:#e2a254;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#241613;
+    --surface:#2f1e1a;
+    --surface-2:#3a2520;
+    --cocoa:#f6ebe2;
+    --cocoa-soft:#d8bfb2;
+    --caramel:#e2a254;
+    --caramel-ink:#f0c080;
+    --wine:#e0677a;
+    --wine-ink:#f0919f;
+    --line:#4a332c;
+    --star:#e2a254;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    background:var(--bg);
+    color:var(--cocoa);
+    font-family:'Mulish', ui-sans-serif, system-ui, sans-serif;
+    padding-inline:20px;
+    line-height:1.55;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', Georgia, serif;
+    font-weight:600;
+    text-wrap:balance;
+    margin:0;
+    color:var(--cocoa);
+  }
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin-inline:auto;}
+  .eyebrow{
+    font-size:.78rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--caramel-ink);
+    font-weight:700;
+  }
+
+  /* header */
+  header.site{
+    position:sticky;
+    top:env(safe-area-inset-top, 0px);
+    z-index:20;
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+    padding-block:14px;
+  }
+  .header-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;}
+  .brand-mark{width:34px;height:34px;flex:none;}
+  .brand-name{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:600;}
+  nav.main-links{display:flex;gap:22px;font-size:.92rem;font-weight:600;}
+  nav.main-links a{text-decoration:none;color:var(--cocoa-soft);}
+  nav.main-links a:hover{color:var(--wine);}
+  @media (max-width:640px){ nav.main-links{display:none;} }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    border-radius:999px;
+    padding:10px 20px;
+    font-weight:700;
+    font-size:.92rem;
+    text-decoration:none;
+    border:1px solid transparent;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--wine);color:#fff8f1;}
+  .btn-primary:hover{background:var(--wine-ink);}
+  .btn-ghost{background:transparent;border-color:var(--line);color:var(--cocoa);}
+  .btn-ghost:hover{border-color:var(--caramel);}
+  .btn svg{width:16px;height:16px;}
+
+  /* hero */
+  .hero{
+    padding-block:56px 44px;
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:40px;
+    align-items:center;
+  }
+  @media (max-width:760px){ .hero{grid-template-columns:1fr;padding-block:36px 28px;} }
+  .hero h1{font-size:clamp(1.9rem,4.2vw,2.9rem);margin-block:10px 14px;}
+  .hero p.lede{color:var(--cocoa-soft);font-size:1.05rem;max-width:46ch;margin-bottom:22px;}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+
+  .hero-art{
+    background:var(--surface-2);
+    border-radius:28px;
+    padding:28px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+    border:1px solid var(--line);
+  }
+  .hero-art .tile{
+    aspect-ratio:1;
+    background:var(--surface);
+    border-radius:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:1px solid var(--line);
+  }
+  .hero-art .tile svg{width:62%;height:62%;}
+  .hero-art .tile:nth-child(2){transform:translateY(-10px);}
+  .hero-art .tile:nth-child(5){transform:translateY(8px);}
+
+  /* section heading */
+  .section{padding-block:52px;}
+  .section-head{max-width:56ch;margin-bottom:30px;}
+  .section-head h2{font-size:clamp(1.5rem,3vw,2.1rem);margin-top:6px;}
+  .note{
+    font-size:.86rem;
+    color:var(--cocoa-soft);
+    margin-top:8px;
+  }
+
+  /* products */
+  .grid-products{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+  }
+  @media (max-width:860px){ .grid-products{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:600px){ .grid-products{grid-template-columns:1fr;} }
+  .card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .card .icon-wrap{
+    width:100%;
+    aspect-ratio:4/3;
+    background:var(--surface-2);
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .card .icon-wrap svg{width:46%;height:46%;}
+  .card h3{font-size:1.08rem;}
+  .card p.desc{color:var(--cocoa-soft);font-size:.92rem;flex:1;margin:0;}
+  .card-foot{display:flex;align-items:center;justify-content:space-between;margin-top:4px;}
+  .price{font-family:'Fraunces',serif;font-weight:600;font-size:1.05rem;color:var(--caramel-ink);}
+  .mini-link{font-size:.85rem;font-weight:700;color:var(--wine);text-decoration:none;}
+  .mini-link:hover{text-decoration:underline;}
+
+  /* testimonials */
+  .grid-quotes{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+  }
+  @media (max-width:700px){ .grid-quotes{grid-template-columns:1fr;} }
+  .quote-card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:20px;
+  }
+  .stars{color:var(--star);font-size:.95rem;letter-spacing:2px;margin-bottom:8px;}
+  .quote-text{margin:0 0 14px;font-size:.98rem;}
+  .quote-who{display:flex;align-items:center;gap:10px;font-size:.88rem;color:var(--cocoa-soft);}
+  .avatar{
+    width:30px;height:30px;border-radius:50%;
+    background:var(--surface-2);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;font-weight:700;font-size:.85rem;color:var(--wine-ink);
+    flex:none;
+  }
+
+  /* contact */
+  .contact-box{
+    background:var(--wine);
+    color:#fff6ee;
+    border-radius:26px;
+    padding:clamp(28px,5vw,48px);
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    gap:24px;
+    align-items:center;
+  }
+  @media (max-width:700px){ .contact-box{grid-template-columns:1fr;text-align:left;} }
+  .contact-box h2{color:#fff6ee;font-size:clamp(1.5rem,3.4vw,2rem);}
+  .contact-box p{color:#f3d9dd;max-width:42ch;}
+  .contact-box .btn-primary{background:#fff6ee;color:var(--wine-ink);}
+  .contact-box .btn-primary:hover{background:#ffe9da;}
+  .contact-meta{display:flex;flex-direction:column;gap:10px;font-size:.92rem;color:#f3d9dd;}
+  .contact-meta b{color:#fff6ee;}
+
+  footer{
+    padding-block:30px 60px;
+    color:var(--cocoa-soft);
+    font-size:.85rem;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+    border-top:1px solid var(--line);
+    margin-top:10px;
+  }
+
+  .float-whatsapp{
+    position:fixed;
+    right:18px;
+    bottom:calc(18px + env(safe-area-inset-bottom, 0px));
+    background:#25D366;
+    color:#0b2512;
+    width:56px;height:56px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+    z-index:30;
+    text-decoration:none;
+  }
+  .float-whatsapp svg{width:28px;height:28px;}
+
+  @media (prefers-reduced-motion:no-preference){
+    .card, .quote-card{transition:transform .18s ease, box-shadow .18s ease;}
+    .card:hover, .quote-card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(58,36,32,.1);}
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Mulish:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<!-- ======================================================================
+  PERSONALIZAR ANTES DE PUBLICAR:
+  1) Cambiá "Dulce Rincón" por el nombre real del negocio (buscá y reemplazá).
+  2) Cambiá el número de WhatsApp 5491122334455 por el número real,
+     formato: código de país + área + número, sin espacios ni símbolos.
+  3) Reemplazá los productos, precios y las opiniones de ejemplo.
+====================================================================== -->
+
+<header class="site">
+  <div class="wrap header-row">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 48 48" fill="none">
+        <circle cx="24" cy="24" r="22" fill="var(--surface-2)" stroke="var(--line)"/>
+        <ellipse cx="24" cy="18" rx="13" ry="7" fill="var(--caramel)"/>
+        <path d="M11 18c0 6 6 11 13 11s13-5 13-11" fill="none" stroke="var(--caramel-ink)" stroke-width="2"/>
+        <ellipse cx="24" cy="30" rx="13" ry="7" fill="var(--cocoa-soft)"/>
+      </svg>
+      <span class="brand-name">Dulce Rincón</span>
+    </div>
+    <nav class="main-links">
+      <a href="#productos">Productos</a>
+      <a href="#opiniones">Opiniones</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-primary" href="https://wa.me/5491122334455?text=Hola!%20Quiero%20hacer%20un%20pedido" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-1.4-.6-2.3-1.4-3-2.7-.1-.2-.1-.4.1-.6.2-.2.5-.5.6-.7.1-.2.1-.4 0-.6-.1-.2-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.1 0 1.2.9 2.4 1 2.6.1.2 1.8 2.8 4.4 3.9 2.1.9 2.5.7 3-.1.4-.5.8-1.7.7-1.9-.1-.1-.2-.2-.4-.3z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Hecho a mano · Pedidos por WhatsApp</p>
+      <h1>Alfajores y chocolates que se sienten como en casa</h1>
+      <p class="lede">Rellenos generosos, chocolate de verdad y recetas de familia. Elegí tu caja y coordinamos la entrega por WhatsApp en minutos.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://wa.me/5491122334455?text=Hola!%20Quiero%20hacer%20un%20pedido" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-1.4-.6-2.3-1.4-3-2.7-.1-.2-.1-.4.1-.6.2-.2.5-.5.6-.7.1-.2.1-.4 0-.6-.1-.2-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.1 0 1.2.9 2.4 1 2.6.1.2 1.8 2.8 4.4 3.9 2.1.9 2.5.7 3-.1.4-.5.8-1.7.7-1.9-.1-.1-.2-.2-.4-.3z"/></svg>
+          Pedir por WhatsApp
+        </a>
+        <a class="btn btn-ghost" href="#productos">Ver productos</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="tile">
+        <svg viewBox="0 0 64 64"><ellipse cx="32" cy="24" rx="20" ry="11" fill="var(--caramel)"/><ellipse cx="32" cy="40" rx="20" ry="11" fill="var(--cocoa-soft)"/></svg>
+      </div>
+      <div class="tile">
+        <svg viewBox="0 0 64 64"><rect x="14" y="14" width="36" height="36" rx="6" fill="var(--cocoa-soft)"/><path d="M14 26h36M14 38h36M26 14v36M38 14v36" stroke="var(--surface-2)" stroke-width="2"/></svg>
+      </div>
+      <div class="tile">
+        <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="18" fill="var(--wine)"/><circle cx="32" cy="32" r="7" fill="var(--surface)"/></svg>
+      </div>
+      <div class="tile">
+        <svg viewBox="0 0 64 64"><ellipse cx="32" cy="24" rx="20" ry="11" fill="var(--cocoa-soft)"/><ellipse cx="32" cy="40" rx="20" ry="11" fill="var(--caramel)"/></svg>
+      </div>
+      <div class="tile">
+        <svg viewBox="0 0 64 64"><rect x="16" y="16" width="32" height="32" rx="16" fill="var(--caramel)"/></svg>
+      </div>
+      <div class="tile">
+        <svg viewBox="0 0 64 64"><rect x="14" y="14" width="36" height="36" rx="6" fill="var(--wine)"/><path d="M14 26h36M14 38h36M26 14v36M38 14v36" stroke="var(--surface)" stroke-width="2"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="productos">
+    <div class="section-head">
+      <p class="eyebrow">Catálogo</p>
+      <h2>Nuestros productos</h2>
+    </div>
+    <div class="grid-products">
+
+      <article class="card">
+        <div class="icon-wrap"><svg viewBox="0 0 64 64"><ellipse cx="32" cy="24" rx="20" ry="11" fill="var(--caramel)"/><ellipse cx="32" cy="40" rx="20" ry="11" fill="var(--cocoa-soft)"/></svg></div>
+        <h3>Alfajor clásico de dulce de leche</h3>
+        <p class="desc">Tapas de manteca y relleno bien generoso, bañado en chocolate con leche.</p>
+        <div class="card-foot"><span class="price">$1.800</span>
+          <a class="mini-link" href="https://wa.me/5491122334455?text=Hola!%20Quiero%20pedir%20Alfajor%20cl%C3%A1sico%20de%20dulce%20de%20leche" target="_blank" rel="noopener">Pedir →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="icon-wrap"><svg viewBox="0 0 64 64"><ellipse cx="32" cy="24" rx="20" ry="11" fill="var(--wine)"/><ellipse cx="32" cy="40" rx="20" ry="11" fill="var(--cocoa-soft)"/></svg></div>
+        <h3>Alfajor de chocolate y coco</h3>
+        <p class="desc">Relleno de dulce de leche con coco tostado y baño de chocolate semiamargo.</p>
+        <div class="card-foot"><span class="price">$1.900</span>
+          <a class="mini-link" href="https://wa.me/5491122334455?text=Hola!%20Quiero%20pedir%20Alfajor%20de%20chocolate%20y%20coco" target="_blank" rel="noopener">Pedir →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="icon-wrap"><svg viewBox="0 0 64 64"><ellipse cx="32" cy="24" rx="20" ry="11" fill="var(--surface-2)" stroke="var(--line)"/><ellipse cx="32" cy="40" rx="20" ry="11" fill="var(--caramel)"/></svg></div>
+        <h3>Alfajor de maicena</h3>
+        <p class="desc">Suaves, se deshacen en la boca, rellenos con dulce de leche repostero y coco.</p>
+        <div class="card-foot"><span class="price">$1.600</span>
+          <a class="mini-link" href="https://wa.me/5491122334455?text=Hola!%20Quiero%20pedir%20Alfajor%20de%20maicena" target="_blank" rel="noopener">Pedir →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="icon-wrap"><svg viewBox="0 0 64 64"><circle cx="22" cy="28" r="10" fill="var(--cocoa-soft)"/><circle cx="42" cy="28" r="10" fill="var(--wine)"/><circle cx="32" cy="42" r="10" fill="var(--caramel)"/></svg></div>
+        <h3>Bombones surtidos x12</h3>
+        <p class="desc">Caja surtida: ganache de chocolate, praliné y frutos secos.</p>
+        <div class="card-foot"><span class="price">$6.500</span>
+          <a class="mini-link" href="https://wa.me/5491122334455?text=Hola!%20Quiero%20pedir%20Bombones%20surtidos%20x12" target="_blank" rel="noopener">Pedir →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="icon-wrap"><svg viewBox="0 0 64 64"><rect x="14" y="14" width="36" height="36" rx="6" fill="var(--cocoa-soft)"/><path d="M14 26h36M14 38h36M26 14v36M38 14v36" stroke="var(--surface-2)" stroke-width="2"/></svg></div>
+        <h3>Tableta de chocolate semiamargo</h3>
+        <p class="desc">70% cacao, tableta de 100g. También disponible con leche.</p>
+        <div class="card-foot"><span class="price">$2.200</span>
+          <a class="mini-link" href="https://wa.me/5491122334455?text=Hola!%20Quiero%20pedir%20Tableta%20de%20chocolate%20semiamargo" target="_blank" rel="noopener">Pedir →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="icon-wrap"><svg viewBox="0 0 64 64"><rect x="12" y="20" width="40" height="30" rx="4" fill="var(--caramel)"/><rect x="12" y="20" width="40" height="8" fill="var(--wine)"/><rect x="28" y="12" width="8" height="20" fill="var(--wine)"/></svg></div>
+        <h3>Caja regalo mixta</h3>
+        <p class="desc">Surtido de alfajores y bombones, ideal para regalar. Incluye tarjeta con dedicatoria.</p>
+        <div class="card-foot"><span class="price">$7.800</span>
+          <a class="mini-link" href="https://wa.me/5491122334455?text=Hola!%20Quiero%20pedir%20la%20Caja%20regalo%20mixta" target="_blank" rel="noopener">Pedir →</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="section" id="opiniones">
+    <div class="section-head">
+      <p class="eyebrow">Clientes felices</p>
+      <h2>Lo que dicen quienes ya probaron</h2>
+      <p class="note">Estos son comentarios de ejemplo para mostrar cómo se vería la sección — reemplazalos por opiniones reales de tus clientas/es.</p>
+    </div>
+    <div class="grid-quotes">
+
+      <div class="quote-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote-text">"Pedí la caja regalo para el cumpleaños de mi mamá y le encantó. Los alfajores de dulce de leche son los mejores que probé."</p>
+        <div class="quote-who"><span class="avatar">M</span> Marina G. · Cliente</div>
+      </div>
+
+      <div class="quote-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote-text">"Los bombones surtidos son una locura, se nota que el chocolate es de calidad. Ya hice tres pedidos este mes."</p>
+        <div class="quote-who"><span class="avatar">L</span> Lucas R. · Cliente</div>
+      </div>
+
+      <div class="quote-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote-text">"Respuesta rapidísima por WhatsApp y coordinamos la entrega sin problema. El alfajor de maicena es mi favorito."</p>
+        <div class="quote-who"><span class="avatar">C</span> Camila F. · Cliente</div>
+      </div>
+
+      <div class="quote-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote-text">"Compré para un evento de 30 personas y llegó todo fresco y bien presentado. Totalmente recomendable."</p>
+        <div class="quote-who"><span class="avatar">D</span> Diego A. · Cliente</div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" id="contacto">
+    <div class="contact-box">
+      <div>
+        <h2>¿Lista tu caja de antojos?</h2>
+        <p>Escribinos por WhatsApp contándonos qué te gusta y coordinamos el pedido y la entrega al toque.</p>
+        <div class="hero-actions" style="margin-top:18px;">
+          <a class="btn btn-primary" href="https://wa.me/5491122334455?text=Hola!%20Quiero%20hacer%20un%20pedido" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-1.4-.6-2.3-1.4-3-2.7-.1-.2-.1-.4.1-.6.2-.2.5-.5.6-.7.1-.2.1-.4 0-.6-.1-.2-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.1 0 1.2.9 2.4 1 2.6.1.2 1.8 2.8 4.4 3.9 2.1.9 2.5.7 3-.1.4-.5.8-1.7.7-1.9-.1-.1-.2-.2-.4-.3z"/></svg>
+            Escribir al +54 9 11 2233-4455
+          </a>
+        </div>
+      </div>
+      <div class="contact-meta">
+        <div><b>Horario de atención</b><br>Lunes a sábado, 9 a 19 h</div>
+        <div><b>Zona de entrega</b><br>Envíos a coordinar por WhatsApp</div>
+        <div><b>Pedidos con anticipación</b><br>24 h para cajas grandes y eventos</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <span>© 2026 Dulce Rincón · Hecho con cariño</span>
+  <span>Sitio de ejemplo — personalizalo antes de publicar</span>
+</footer>
+
+<a class="float-whatsapp" href="https://wa.me/5491122334455?text=Hola!%20Quiero%20hacer%20un%20pedido" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-1.4-.6-2.3-1.4-3-2.7-.1-.2-.1-.4.1-.6.2-.2.5-.5.6-.7.1-.2.1-.4 0-.6-.1-.2-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.1 0 1.2.9 2.4 1 2.6.1.2 1.8 2.8 4.4 3.9 2.1.9 2.5.7 3-.1.4-.5.8-1.7.7-1.9-.1-.1-.2-.2-.4-.3z"/></svg>
+</a>
