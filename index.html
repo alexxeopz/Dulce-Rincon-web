@@ -154,6 +154,25 @@
     margin-top:8px;
   }
 
+  /* occasions */
+  .occasion-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  .occasion-chip{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:14px 18px;
+    flex:1 1 220px;
+  }
+  .occasion-chip svg{width:30px;height:30px;flex:none;}
+  .occasion-chip span{font-weight:700;font-size:.95rem;}
+
   /* products */
   .grid-products{
     display:grid;
@@ -191,10 +210,9 @@
   /* testimonials */
   .grid-quotes{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
     gap:18px;
   }
-  @media (max-width:700px){ .grid-quotes{grid-template-columns:1fr;} }
   .quote-card{
     background:var(--surface);
     border:1px solid var(--line);
@@ -335,6 +353,32 @@
     </div>
   </section>
 
+  <section class="section" style="padding-block:4px 20px;">
+    <div class="section-head" style="margin-bottom:18px;">
+      <p class="eyebrow">Hecho con amor</p>
+      <h2>Para cada ocasión especial</h2>
+      <p class="note">Armamos la caja a tu medida, desde un gesto para dos hasta la mesa dulce de un evento.</p>
+    </div>
+    <div class="occasion-row">
+      <div class="occasion-chip">
+        <svg viewBox="0 0 32 32" fill="none"><path d="M16 27s-11-6.8-11-14.6C5 8 8 5 11.8 5c2.2 0 4 1.1 4.2 3 .2-1.9 2-3 4.2-3C24 5 27 8 27 12.4 27 20.2 16 27 16 27z" fill="var(--wine)"/></svg>
+        <span>Para tu pareja</span>
+      </div>
+      <div class="occasion-chip">
+        <svg viewBox="0 0 32 32" fill="none"><rect x="5" y="16" width="22" height="10" rx="2" fill="var(--caramel)"/><rect x="5" y="12" width="22" height="5" fill="var(--cocoa-soft)"/><rect x="14" y="4" width="4" height="7" fill="var(--wine)"/><circle cx="16" cy="4" r="2" fill="var(--wine)"/></svg>
+        <span>Cumpleaños</span>
+      </div>
+      <div class="occasion-chip">
+        <svg viewBox="0 0 32 32" fill="none"><rect x="5" y="13" width="22" height="14" rx="2" fill="var(--cocoa-soft)"/><rect x="5" y="13" width="22" height="6" fill="var(--wine)"/><rect x="14" y="7" width="4" height="20" fill="var(--surface-2)"/><path d="M16 7c-2 0-4-1.5-4-3.5S13.5 1 16 3c2.5-2 6 0 4 3.5-1 1.8-2.5 2-4 2.5z" fill="var(--caramel)"/></svg>
+        <span>Eventos y empresas</span>
+      </div>
+      <div class="occasion-chip">
+        <svg viewBox="0 0 32 32" fill="none"><path d="M16 4l2.3 7h7.3l-5.9 4.3 2.3 7L16 17.9 9.9 22.3l2.3-7L6.3 11h7.3z" fill="var(--caramel)"/></svg>
+        <span>Porque sí, date un gusto</span>
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="productos">
     <div class="section-head">
       <p class="eyebrow">Catálogo</p>
@@ -429,6 +473,12 @@
         <div class="stars">★★★★★</div>
         <p class="quote-text">"Compré para un evento de 30 personas y llegó todo fresco y bien presentado. Totalmente recomendable."</p>
         <div class="quote-who"><span class="avatar">D</span> Diego A. · Cliente</div>
+      </div>
+
+      <div class="quote-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote-text">"Para nuestro aniversario le armé una cajita con sus bombones favoritos y un alfajor de regalo. Se nota en cada detalle que está hecho con amor — quedó fascinado."</p>
+        <div class="quote-who"><span class="avatar">S</span> Sofía P. · Cliente</div>
       </div>
 
     </div>
